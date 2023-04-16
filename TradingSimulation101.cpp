@@ -108,6 +108,45 @@ ostream& operator<<(ostream& flux, const date& d ){
 	return flux ;
 }
 
+class prixjournalier {
+	private:
+		date date;
+		char[10] nomaction;
+		double prix;
+	public:
+		prixjournalier(date d,char[10] nom,double p);
+		date getdate();
+	        char[10] getnomaction();
+	        double getprix();
+		friend ostream& operator<<(ostream& flux , const prixjournalier& pj);
+};
+
+class prixjournalier {
+	private:
+		date date;
+                char nomaction[10];
+		double prix;
+	public:
+		class date getdate(){return date;}
+                double getprix(){return prix;}
+                friend ostream& operator<<(ostream& flux , const prixjournalier& pj);
+		prixjournalier (class date d,char nom[10],double p)
+		{
+		   date=d;
+		   for (int i=0;i<10;i++)
+           {
+               nom[i]=nomaction[i];
+           }
+
+		   prix=p;
+		}
+};
+
+ostream& operator<<(ostream& flux , const prixjournalier& pj)
+		{
+		    flux<<pj.date<<"/"<<pj.nomaction<<"/"<<pj.prix<<endl;
+		    return flux ;
+		}
 
 int main(){
 	date d(0,4,2011);
