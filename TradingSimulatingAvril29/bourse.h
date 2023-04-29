@@ -10,7 +10,7 @@ class Bourse {
     Bourse(){};
     Bourse(date ajd):aujourdhui(ajd){};
     virtual ~Bourse(){};
-    virtual vector<string> getActionDisponiblesParDate(date d)=0;
+    virtual vector<string> getActionsDisponiblesParDate(date d)=0;
     virtual vector<PrixJournalier> PrixJournaliersParDate(date d)=0;
     date getdateaujourdhui() const{return aujourdhui;}
 };
