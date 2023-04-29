@@ -10,7 +10,7 @@ class BourseVecteur: public Bourse  {
 private:
     vector<PrixJournalier> historique;
 public:
-    BourseVecteur(vector<PrixJournalier> h):historique(h){};
+    BourseVecteur(vector<PrixJournalier>& h):historique(h){};
     ~BourseVecteur(){};
     vector<string> getActionsDisponiblesParDate(date d) {
     vector<string> actions;
