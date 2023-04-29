@@ -22,7 +22,6 @@ class TraderAleatoire : public Trader {
            int s=rand()%3;
            while(i<100 && s!=2 )
            {
-              int s;
               s=rand()%3;
               int r;
 
@@ -31,11 +30,9 @@ class TraderAleatoire : public Trader {
                   case 0:
                       {
                         r=rand()%boursevecteur.getActionsDisponiblesParDate(date).size();
-                        int max_x = static_cast<int>(floor(portefeuille.getSolde()/boursevecteur.PrixJournaliersParDate(date).at(r).getprix())); // partie entière de a/b
-                        random_device rd;
-                        mt19937 gen(rd());
-                        uniform_int_distribution<> dis(1, max_x);
-                        int x = dis(gen);
+                        int a=floor(portefeuille.getSolde()/boursevecteur.PrixJournaliersParDate(date).at(r).getprix()); // partie entiÃ¨re de a/b
+                        int x;
+                        x=rand()%a+1;
                         portefeuille.retirermontant(boursevecteur.PrixJournaliersParDate(date).at(r).getprix()*x);
                         string s;
                         s=boursevecteur.PrixJournaliersParDate(date).at(r).getaction();
@@ -46,7 +43,7 @@ class TraderAleatoire : public Trader {
                         }
                         else
                         {
-                            Portefeuille::Titres.at(portefeuille.existe(boursevecteur.PrixJournaliersParDate(date).at(r).getaction())).ajouterQuantite(x);
+                            portefeuille.Titres.at(portefeuille.existe(boursevecteur.PrixJournaliersParDate(date).at(r).getaction())).ajouterQuantite(x);
                         }
 
 
@@ -56,11 +53,11 @@ class TraderAleatoire : public Trader {
 
                   case 1:
                       {
-                          r=rand()%Portefeuille::Titres.size();
+                          r=rand()%portefeuille.Titres.size();
                           int x;
-                          x=rand()%(Portefeuille::Titres.at(r).getQuantite()+1);
-                          (Portefeuille::Titres.at(r)).retirerQuantite(x);
-                          if(Portefeuille::Titres.at(r).getQuantite()==0)
+                          x=rand()%(portefeuille.Titres.at(r).getQuantite()+1);
+                          (portefeuille.Titres.at(r)).retirerQuantite(x);
+                          if(portefeuille.Titres.at(r).getQuantite()==0)
                              portefeuille.retirertitre(r);
                           portefeuille.deposermontant(boursevecteur.PrixJournaliersParDate(date).at(r).getprix()*x);
                       }
