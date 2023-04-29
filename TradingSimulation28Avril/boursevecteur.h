@@ -15,7 +15,7 @@ public:
     }
     return actions;
     }
-    friend vector<PrixJournalier> PrixJournaliersParDate(date d) {
+    vector<PrixJournalier> PrixJournaliersParDate(date d)const {
     vector<PrixJournalier> pjd;
     for(unsigned int i = 0; i < historique.size(); i++) {
         if(historique.at(i).getdate() == d)
