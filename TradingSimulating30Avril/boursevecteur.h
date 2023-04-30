@@ -31,7 +31,7 @@ public:
     }
     double dernierprix(string action,date d)
     {
-        for(unsigned int i=historique.size();i>0;i--)
+        for(unsigned int i=historique.size()-1;i>0;i--)
         {
             if((historique.at(i).getaction()==action)&&(historique.at(i).getdate()<=d))
                 return historique.at(i).getprix();
